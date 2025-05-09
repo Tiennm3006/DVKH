@@ -123,7 +123,7 @@ with tabs[1]:
                        'Phiếu đúng hạn', 'Tỷ lệ đúng hạn', 'Kế hoạch', 'So sánh']
         df2 = df2.dropna(subset=['Đơn vị'])
         df2 = df2[['STT', 'Đơn vị', 'Số yêu cầu xử lý', 'Phiếu trễ hạn', 'Tỷ lệ trễ hạn']]
-        df2['Tỷ lệ trễ hạn (%)'] = (df2['Tỷ lệ trễ hạn'] * 100).round(2)
+        df2['Tỷ lệ trễ hạn (%)'] = (df2['Phiếu trễ hạn'] / df2['Số yêu cầu xử lý'] * 100).round(2)
         # Tách 'Công ty' ra nếu có
         df2_company = df2[df2['Đơn vị'].str.lower().str.contains('công ty', na=False)]
         df2 = df2[~df2['Đơn vị'].str.lower().str.contains('công ty', na=False)]
